@@ -25,3 +25,7 @@ public class Palindrome
 		}
 	}
 }
+
+Output:
+Please enter a word to check if it's a palindrome : mom
+mom is a palindrome.
