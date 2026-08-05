@@ -1,0 +1,49 @@
+package praneeel;
+import java.util.Scanner;
+public class Anagram 
+{
+    public static void main(String args[]) 
+    {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter first word: ");
+        String word1 = sc.nextLine();
+
+        System.out.print("Enter second word: ");
+        String word2 = sc.nextLine();
+
+        if (word1.length() != word2.length()) 
+        {
+            System.out.println("Not anagrams.");
+            return;
+        }
+
+        String temp = word2;
+        boolean isAnagram = true;
+
+        int i = 0;
+        while (i < word1.length()) 
+        {
+            char ch = word1.charAt(i);
+            int pos = temp.indexOf(ch);
+
+            if (pos == -1) 
+            {
+                isAnagram = false;
+                break;
+            }
+
+            temp = temp.substring(0, pos) + temp.substring(pos + 1);
+            i++;
+        }
+
+        if (isAnagram)
+            System.out.println("Anagrams.");
+        else
+            System.out.println("Not anagrams.");
+    }
+}
+
+Output:
+Enter first word: listen
+Enter second word: silent
+Anagrams.
