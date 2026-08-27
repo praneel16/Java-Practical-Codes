@@ -1,0 +1,148 @@
+package praneeel;
+
+public class Employee {
+
+    String employeeName;
+    String employeeAddress;
+    double employeeSalary;
+    String designation;
+
+    public Employee(String employeeName, String employeeAddress,
+                    double employeeSalary, String designation) {
+
+        this.employeeName = employeeName;
+        this.employeeAddress = employeeAddress;
+        this.employeeSalary = employeeSalary;
+        this.designation = designation;
+    }
+
+    public double calculateIncentive() {
+        return employeeSalary * 0.05;
+    }
+
+    public void displayPerformanceReport() {
+        System.out.println("Performance Report for: " + employeeName);
+        System.out.println("Designation: " + designation);
+        System.out.println("Address: " + employeeAddress);
+        System.out.println("Salary: " + employeeSalary);
+        System.out.println("Bonus: " + calculateIncentive());
+    }
+
+    public void handleWork() {
+        System.out.println(employeeName +
+                " is working on general company projects.");
+    }
+}
+
+
+class Manager extends Employee {
+
+    public Manager(String employeeName, String employeeAddress,
+                   double employeeSalary) {
+
+        super(employeeName, employeeAddress, employeeSalary, "Manager");
+    }
+
+    @Override
+    public double calculateIncentive() {
+        return employeeSalary * 0.15;
+    }
+
+    @Override
+    public void handleWork() {
+        System.out.println(employeeName +
+                " is managing projects and leading the team.");
+    }
+}
+
+
+class Developer extends Employee {
+
+    public Developer(String employeeName, String employeeAddress,
+                     double employeeSalary) {
+
+        super(employeeName, employeeAddress, employeeSalary, "Developer");
+    }
+
+    @Override
+    public double calculateIncentive() {
+        return employeeSalary * 0.12;
+    }
+
+    @Override
+    public void handleWork() {
+        System.out.println(employeeName +
+                " is developing software and fixing bugs.");
+    }
+}
+
+
+class Programmer extends Employee {
+
+    public Programmer(String employeeName, String employeeAddress,
+                      double employeeSalary) {
+
+        super(employeeName, employeeAddress, employeeSalary, "Programmer");
+    }
+
+    @Override
+    public double calculateIncentive() {
+        return employeeSalary * 0.10;
+    }
+
+    @Override
+    public void handleWork() {
+        System.out.println(employeeName +
+                " is writing and testing program code.");
+    }
+}
+
+
+class EmployeeHierarchy {
+
+    public static void main(String[] args) {
+
+        Employee manager = new Manager("Rahul", "Mumbai", 90000);
+        Employee developer = new Developer("Aarav", "Pune", 70000);
+        Employee programmer = new Programmer("Neha", "Pune", 60000);
+
+        Employee[] employeeList = {
+            manager, developer, programmer
+        };
+
+        for (Employee currentEmployee : employeeList) {
+
+            System.out.println("==========================");
+
+            currentEmployee.displayPerformanceReport();
+            currentEmployee.handleWork();
+
+            System.out.println();
+        }
+    }
+}
+
+Output : 
+==========================
+Performance Report for: Rahul
+Designation: Manager
+Address: Mumbai
+Salary: 90000.0
+Bonus: 13500.0
+Rahul is managing projects and leading the team.
+
+==========================
+Performance Report for: Aarav
+Designation: Developer
+Address: Pune
+Salary: 70000.0
+Bonus: 8400.0
+Aarav is developing software and fixing bugs.
+
+==========================
+Performance Report for: Neha
+Designation: Programmer
+Address: Pune
+Salary: 60000.0
+Bonus: 6000.0
+Neha is writing and testing program code.
