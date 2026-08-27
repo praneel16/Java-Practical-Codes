@@ -5,32 +5,32 @@ public class Employee {
     String employeeName;
     String employeeAddress;
     double employeeSalary;
-    String designation;
+    String jobRole;
 
     public Employee(String employeeName, String employeeAddress,
-                    double employeeSalary, String designation) {
+                    double employeeSalary, String jobRole) {
 
         this.employeeName = employeeName;
         this.employeeAddress = employeeAddress;
         this.employeeSalary = employeeSalary;
-        this.designation = designation;
+        this.jobRole = jobRole;
     }
 
-    public double calculateIncentive() {
+    public double calculateBonus() {
         return employeeSalary * 0.05;
     }
 
-    public void displayPerformanceReport() {
-        System.out.println("Performance Report for: " + employeeName);
-        System.out.println("Designation: " + designation);
-        System.out.println("Address: " + employeeAddress);
-        System.out.println("Salary: " + employeeSalary);
-        System.out.println("Bonus: " + calculateIncentive());
+    public void generatePerformanceReport() {
+        System.out.println("Performance Report for : " + employeeName);
+        System.out.println("Job Title : " + jobRole);
+        System.out.println("Address : " + employeeAddress);
+        System.out.println("Salary : " + employeeSalary);
+        System.out.println("Bonus : " + calculateBonus());
     }
 
-    public void handleWork() {
+    public void manageProject() {
         System.out.println(employeeName +
-                " is working on general company projects.");
+                " is working on general company projects");
     }
 }
 
@@ -43,15 +43,13 @@ class Manager extends Employee {
         super(employeeName, employeeAddress, employeeSalary, "Manager");
     }
 
-    @Override
-    public double calculateIncentive() {
+    public double calculateBonus() {
         return employeeSalary * 0.15;
     }
 
-    @Override
-    public void handleWork() {
+    public void manageProject() {
         System.out.println(employeeName +
-                " is managing projects and leading the team.");
+                " is managing multiple company projects and leading the team");
     }
 }
 
@@ -64,15 +62,13 @@ class Developer extends Employee {
         super(employeeName, employeeAddress, employeeSalary, "Developer");
     }
 
-    @Override
-    public double calculateIncentive() {
-        return employeeSalary * 0.12;
+    public double calculateBonus() {
+        return employeeSalary * 0.15;
     }
 
-    @Override
-    public void handleWork() {
+    public void manageProject() {
         System.out.println(employeeName +
-                " is developing software and fixing bugs.");
+                " is developing software modules and fixing bugs");
     }
 }
 
@@ -85,15 +81,13 @@ class Programmer extends Employee {
         super(employeeName, employeeAddress, employeeSalary, "Programmer");
     }
 
-    @Override
-    public double calculateIncentive() {
-        return employeeSalary * 0.10;
+    public double calculateBonus() {
+        return employeeSalary * 0.15;
     }
 
-    @Override
-    public void handleWork() {
+    public void manageProject() {
         System.out.println(employeeName +
-                " is writing and testing program code.");
+                " is developing software modules and fixing bugs");
     }
 }
 
@@ -102,20 +96,20 @@ class EmployeeHierarchy {
 
     public static void main(String[] args) {
 
-        Employee manager = new Manager("Rahul", "Mumbai", 90000);
-        Employee developer = new Developer("Aarav", "Pune", 70000);
-        Employee programmer = new Programmer("Neha", "Pune", 60000);
+        Manager manager = new Manager("Alice", "Mumbai", 90000);
+        Developer developer = new Developer("Bob", "Pune", 70000);
+        Programmer programmer = new Programmer("Tom", "Pune", 60000);
 
-        Employee[] employeeList = {
+        Employee[] employees = {
             manager, developer, programmer
         };
 
-        for (Employee currentEmployee : employeeList) {
+        for (Employee employee : employees) {
 
-            System.out.println("==========================");
+            System.out.println("=========================");
 
-            currentEmployee.displayPerformanceReport();
-            currentEmployee.handleWork();
+            employee.generatePerformanceReport();
+            employee.manageProject();
 
             System.out.println();
         }
@@ -123,26 +117,26 @@ class EmployeeHierarchy {
 }
 
 Output : 
-==========================
-Performance Report for: Rahul
-Designation: Manager
-Address: Mumbai
-Salary: 90000.0
-Bonus: 13500.0
-Rahul is managing projects and leading the team.
+=========================
+Performance Report for : Alice
+Job Title : Manager
+Address : Mumbai
+Salary : 90000.0
+Bonus : 13500.0
+Alice is managing multiple company projects and leading the team
 
-==========================
-Performance Report for: Aarav
-Designation: Developer
-Address: Pune
-Salary: 70000.0
-Bonus: 8400.0
-Aarav is developing software and fixing bugs.
+=========================
+Performance Report for : Bob
+Job Title : Developer
+Address : Pune
+Salary : 70000.0
+Bonus : 10500.0
+Bob is developing software modules and fixing bugs
 
-==========================
-Performance Report for: Neha
-Designation: Programmer
-Address: Pune
-Salary: 60000.0
-Bonus: 6000.0
-Neha is writing and testing program code.
+=========================
+Performance Report for : Tom
+Job Title : Programmer
+Address : Pune
+Salary : 60000.0
+Bonus : 9000.0
+Tom is developing software modules and fixing bugs
